@@ -18,11 +18,11 @@
 },
 "healthbar.png":
 {
-	"frame": {"x":16,"y":4,"w":16,"h":4},
+	"frame": {"x":29,"y":4,"w":15,"h":2},
 	"rotated": false,
 	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":4},
-	"sourceSize": {"w":16,"h":4}
+	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":2},
+	"sourceSize": {"w":15,"h":2}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
