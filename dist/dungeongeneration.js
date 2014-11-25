@@ -1950,8 +1950,9 @@ Entity.prototype = {
 		this.components[component.name] = component;
 
 		if(component.name == "health"){
-			this.healthbarTexture = PIXI.Texture.fromImage("healthbar.png");
-			this.healthbar = new PIXI.Sprite(this.healthbarTexture);
+			this.healthbarTextureGreen = PIXI.Texture.fromImage("healthbarGreen.png");
+			this.healthbarTextureRed = PIXI.Texture.fromImage("healthbarRed.png");
+			this.healthbar = new PIXI.Sprite(this.healthbarTextureGreen);
 			this.healthbar.position.y = -2;
 			this.container.addChild(this.healthbar);
 		}
@@ -2417,13 +2418,21 @@ Combat.prototype = {
 			//Get the current entities components
 			var healthComponent = enemyEntity.getComponent("health");
 			var healthbar = enemyEntity.healthbar;
-			var healthbarTexture = enemyEntity.healthbarTexture;
+			var healthbarTextureRed = enemyEntity.healthbarTextureRed;
+			var healthbarTextureGreen = enemyEntity.healthbarTextureGreen;
 
 			//The weapon of the current entity should damage to the current enemy
 			healthComponent.takeDamage(weaponComponent.damage);
-			console.log(healthbarTexture.frame);
-			healthbar.setTexture(new PIXI.Texture(healthbarTexture, new PIXI.Rectangle(healthbarTexture.frame.x, healthbarTexture.frame.y, healthbarTexture.frame.width*healthComponent.percentage(), healthbarTexture.frame.height)));
+			console.log(healthbarTextureRed.frame);
 			
+
+			//Health bar turns red once health drops below 50%
+			if(healthComponent.percentage() > 0.50) {
+				healthbar.setTexture(new PIXI.Texture(healthbarTextureGreen, new PIXI.Rectangle(healthbarTextureGreen.frame.x, healthbarTextureGreen.frame.y, healthbarTextureGreen.frame.width*healthComponent.percentage(), healthbarTextureGreen.frame.height)));
+			} else {
+				healthbar.setTexture(new PIXI.Texture(healthbarTextureRed, new PIXI.Rectangle(healthbarTextureRed.frame.x, healthbarTextureRed.frame.y, healthbarTextureRed.frame.width*healthComponent.percentage(), healthbarTextureRed.frame.height)));
+			}
+
 
 			//Generate the TextLog message
 			var textLogMessage = entity.name + " hit " + enemyEntity.name + " for " + weaponComponent.damage + " damage";
