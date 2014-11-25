@@ -1842,6 +1842,12 @@ var Entity = function(game, name, sprite, speed) {
 	this.sprite = PIXI.Sprite.fromFrame(sprite);
 
 	/**
+	 * @property {PIXI.DisplayObjectContainer} container - the container for the sprite and health bar
+	 */
+	this.container = new PIXI.DisplayObjectContainer();
+	this.container.addChild(this.sprite);
+
+	/**
 	 * @property {Object} components - An object filled with all the components this entity has
 	 */
 	this.components = {};
@@ -1943,6 +1949,13 @@ Entity.prototype = {
 		//Add the component
 		this.components[component.name] = component;
 
+		if(component.name == "health"){
+			this.healthbarTextureGreen = PIXI.Texture.fromImage("healthbarGreen.png");
+			this.healthbarTextureRed = PIXI.Texture.fromImage("healthbarRed.png");
+			this.healthbar = new PIXI.Sprite(this.healthbarTextureGreen);
+			this.healthbar.position.y = -2;
+			this.container.addChild(this.healthbar);
+		}
 	},
 
 	/**
@@ -2115,7 +2128,7 @@ Group.prototype.addEntity = function(entity) {
 	}
 
 	//Add the sprite component to the DisplayObjectContainer
-	this.addChild(entity.sprite);
+	this.addChild(entity.container);
 
 	//If the entity has a position, position the sprite at that position
 	if(entity.hasComponent('position')) {
@@ -2130,7 +2143,7 @@ Group.prototype.addEntity = function(entity) {
 		};
 
 		//Set the position
-		entity.sprite.position = new PIXI.Point(newPosition.x, newPosition.y);
+		entity.container.position = new PIXI.Point(newPosition.x, newPosition.y);
 
 	}
 
@@ -2158,7 +2171,7 @@ Group.prototype.removeEntity = function(entity) {
 	}
 
 	//Remove the sprite component from the the DisplayObjectContainer
-	this.removeChild(entity.sprite);
+	this.removeChild(entity.container);
 
 	//Remove the current entity from the group
 	this.entities.splice(index, 1);
@@ -2404,9 +2417,22 @@ Combat.prototype = {
 
 			//Get the current entities components
 			var healthComponent = enemyEntity.getComponent("health");
+			var healthbar = enemyEntity.healthbar;
+			var healthbarTextureRed = enemyEntity.healthbarTextureRed;
+			var healthbarTextureGreen = enemyEntity.healthbarTextureGreen;
 
 			//The weapon of the current entity should damage to the current enemy
 			healthComponent.takeDamage(weaponComponent.damage);
+			console.log(healthbarTextureRed.frame);
+
+
+			//Health bar turns red once health drops below 50%
+			if(healthComponent.percentage() > 0.50) {
+				healthbar.setTexture(new PIXI.Texture(healthbarTextureGreen, new PIXI.Rectangle(healthbarTextureGreen.frame.x, healthbarTextureGreen.frame.y, healthbarTextureGreen.frame.width*healthComponent.percentage(), healthbarTextureGreen.frame.height)));
+			} else {
+				healthbar.setTexture(new PIXI.Texture(healthbarTextureRed, new PIXI.Rectangle(healthbarTextureRed.frame.x, healthbarTextureRed.frame.y, healthbarTextureRed.frame.width*healthComponent.percentage(), healthbarTextureRed.frame.height)));
+			}
+
 
 			//Generate the TextLog message
 			var textLogMessage = entity.name + " hit " + enemyEntity.name + " for " + weaponComponent.damage + " damage";
@@ -2845,7 +2871,7 @@ Movement.prototype = {
 			nextTile.addEntity(entity);
 
 			//Update the position of the sprite
-			entity.sprite.position = new PIXI.Point(newPosition.x * this.game.map.settings.tileSize, newPosition.y * this.game.map.settings.tileSize);
+			entity.container.position = new PIXI.Point(newPosition.x * this.game.map.settings.tileSize, newPosition.y * this.game.map.settings.tileSize);
 
 			//Set the new position in the position component
 			positionComponent.position = newPosition;
