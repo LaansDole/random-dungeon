@@ -1,5 +1,13 @@
 {"frames": {
 
+"potion.png":
+{
+	"frame": {"x":96,"y":0,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+},
 "skeleton_left.png":
 {
 	"frame": {"x":80,"y":0,"w":16,"h":16},
