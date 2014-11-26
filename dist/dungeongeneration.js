@@ -177,7 +177,7 @@ Camera.prototype = {
 //Export the Browserify module
 module.exports = Camera;
 
-},{"../geometry/boundary.js":30}],2:[function(require,module,exports){
+},{"../geometry/boundary.js":31}],2:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -377,7 +377,8 @@ Game.prototype = {
 			"left": 65,
 			"right": 68,
 			"up": 87,
-			"down": 83
+			"down": 83,
+			"heal": 49
 		};
 
 		//Create the player entity
@@ -557,7 +558,7 @@ Game.prototype = {
 //Export the Browserify module
 module.exports = Game;
 
-},{"../factories/playerfactory.js":7,"../gameobjects/group.js":22,"../gameobjects/statuseffects/fire.js":23,"../gameobjects/systems/combat.js":25,"../gameobjects/systems/lightmap.js":26,"../gameobjects/systems/movement.js":27,"../gameobjects/systems/open.js":28,"../gameobjects/systems/pathfinding.js":29,"../geometry/vector2.js":31,"../input/keyboard.js":35,"../tilemap/map.js":38,"../tilemap/mapdecorator.js":39,"../tilemap/mapfactory.js":40,"../time/scheduler.js":44,"../ui/ui.js":49,"./camera.js":1,"./utils.js":3,"./world.js":4}],3:[function(require,module,exports){
+},{"../factories/playerfactory.js":7,"../gameobjects/group.js":23,"../gameobjects/statuseffects/fire.js":24,"../gameobjects/systems/combat.js":26,"../gameobjects/systems/lightmap.js":27,"../gameobjects/systems/movement.js":28,"../gameobjects/systems/open.js":29,"../gameobjects/systems/pathfinding.js":30,"../geometry/vector2.js":32,"../input/keyboard.js":36,"../tilemap/map.js":39,"../tilemap/mapdecorator.js":40,"../tilemap/mapfactory.js":41,"../time/scheduler.js":45,"../ui/ui.js":50,"./camera.js":1,"./utils.js":3,"./world.js":4}],3:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -629,7 +630,7 @@ var Utils = {
 //Export the Browserify module
 module.exports = Utils;
 
-},{"../libraries/mersennetwister.js":37}],4:[function(require,module,exports){
+},{"../libraries/mersennetwister.js":38}],4:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -693,7 +694,7 @@ World.prototype.initialize = function() {
 //Export the Browserify module
 module.exports = World;
 
-},{"../geometry/vector2.js":31,"./camera.js":1}],5:[function(require,module,exports){
+},{"../geometry/vector2.js":32,"./camera.js":1}],5:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -736,7 +737,7 @@ var DecorationFactory = {
 //Export the Browserify module
 module.exports = DecorationFactory;
 
-},{"../core/utils.js":3,"../gameobjects/components/position.js":18,"../gameobjects/entity.js":21}],6:[function(require,module,exports){
+},{"../core/utils.js":3,"../gameobjects/components/position.js":18,"../gameobjects/entity.js":22}],6:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -862,7 +863,7 @@ var EnemyFactory = {
 //Export the Browserify module
 module.exports = EnemyFactory;
 
-},{"../gameobjects/behaviours/moveBehaviours.js":9,"../gameobjects/components/canfight.js":10,"../gameobjects/components/canopen.js":11,"../gameobjects/components/collide.js":12,"../gameobjects/components/health.js":13,"../gameobjects/components/movement.js":17,"../gameobjects/components/position.js":18,"../gameobjects/components/tooltip.js":19,"../gameobjects/components/weapon.js":20,"../gameobjects/entity.js":21}],7:[function(require,module,exports){
+},{"../gameobjects/behaviours/moveBehaviours.js":9,"../gameobjects/components/canfight.js":10,"../gameobjects/components/canopen.js":11,"../gameobjects/components/collide.js":12,"../gameobjects/components/health.js":13,"../gameobjects/components/movement.js":17,"../gameobjects/components/position.js":18,"../gameobjects/components/tooltip.js":20,"../gameobjects/components/weapon.js":21,"../gameobjects/entity.js":22}],7:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -876,7 +877,8 @@ var Entity = require('../gameobjects/entity.js'),
 	CanFight = require('../gameobjects/components/canfight.js'),
 	Tooltip = require('../gameobjects/components/tooltip.js'),
 	Inventory = require('../gameobjects/components/inventory.js'),
-	Position = require('../gameobjects/components/position.js');
+	Position = require('../gameobjects/components/position.js'),
+	Potion = require('../gameobjects/components/potion.js');
 
 /**
  * @class PlayerFactory
@@ -936,6 +938,7 @@ var PlayerFactory = {
 			""
 		));
 
+		entity.addComponent(new Potion(50,5));
 		//Return the entity
 		return entity;
 
@@ -946,7 +949,7 @@ var PlayerFactory = {
 //Export the Browserify module
 module.exports = PlayerFactory;
 
-},{"../gameobjects/components/canfight.js":10,"../gameobjects/components/collide.js":12,"../gameobjects/components/health.js":13,"../gameobjects/components/inventory.js":14,"../gameobjects/components/keyboardcontrol.js":15,"../gameobjects/components/lightsource.js":16,"../gameobjects/components/position.js":18,"../gameobjects/components/tooltip.js":19,"../gameobjects/components/weapon.js":20,"../gameobjects/entity.js":21}],8:[function(require,module,exports){
+},{"../gameobjects/components/canfight.js":10,"../gameobjects/components/collide.js":12,"../gameobjects/components/health.js":13,"../gameobjects/components/inventory.js":14,"../gameobjects/components/keyboardcontrol.js":15,"../gameobjects/components/lightsource.js":16,"../gameobjects/components/position.js":18,"../gameobjects/components/potion.js":19,"../gameobjects/components/tooltip.js":20,"../gameobjects/components/weapon.js":21,"../gameobjects/entity.js":22}],8:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -1048,7 +1051,7 @@ var PropFactory = {
 //Export the Browserify module
 module.exports = PropFactory;
 
-},{"../gameobjects/components/canopen.js":11,"../gameobjects/components/collide.js":12,"../gameobjects/components/position.js":18,"../gameobjects/components/tooltip.js":19,"../gameobjects/entity.js":21}],9:[function(require,module,exports){
+},{"../gameobjects/components/canopen.js":11,"../gameobjects/components/collide.js":12,"../gameobjects/components/position.js":18,"../gameobjects/components/tooltip.js":20,"../gameobjects/entity.js":22}],9:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -1170,7 +1173,7 @@ CanFight.prototype = {
 //Export the Browserify module
 module.exports = CanFight;
 
-},{"../../input/event.js":33}],11:[function(require,module,exports){
+},{"../../input/event.js":34}],11:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -1248,7 +1251,7 @@ CanOpen.prototype = {
 //Export the Browserify module
 module.exports = CanOpen;
 
-},{"../../input/event.js":33}],12:[function(require,module,exports){
+},{"../../input/event.js":34}],12:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -1363,7 +1366,22 @@ Health.prototype = {
 
 		}
 
-	}
+	},
+	/**
+	 * Function to heal
+	 * @protected
+	 */
+	healDamage: function(lifeGain) {
+	 	this.health += lifeGain;
+		if(this.health > this.maxHealth) {
+
+			this.health = this.maxHealth;
+
+		}
+
+	 }
+
+
 
 };
 
@@ -1539,6 +1557,15 @@ KeyboardControl.prototype = {
 
 						break;
 
+					case("heal"):
+
+						var healKey = this.keyboard.getKey(this.controls[key]);
+
+						healKey.onDown.on(this.controls[key], this.newHealth.bind(this), this);
+
+
+						break;
+
 				}
 
 			}
@@ -1595,10 +1622,29 @@ KeyboardControl.prototype = {
 
 		//Tell the movement system that you want to move to the new position
 		this.game.staticSystems.movementSystem.handleSingleEntity(this.entity, newPosition);
-
+	
 		//Unlock the scheduler because the player has moved
 		this.scheduler.unlock();
 
+	},
+
+	newHealth: function(){
+		var healthComponent = this.entity.getComponent("health");
+
+		var potionComponent = this.entity.getComponent("potion");
+		if(potionComponent.hasPotion()){
+			potionComponent.usePotion();
+			healthComponent.healDamage(potionComponent.lifeGain);
+			this.entity.updateHealthbar();
+
+			var textLogMessage = this.entity.name + " used a potion and healed for " + potionComponent.lifeGain + " life. "+potionComponent.count+" potions left";
+
+		}else{
+			var textLogMessage = "Sorry, "+ this.entity.name+ " are out of potion";
+		}
+
+		this.game.UI.textLog.addMessage(textLogMessage);
+		this.scheduler.unlock();
 	}
 
 };
@@ -1607,7 +1653,7 @@ KeyboardControl.prototype = {
 module.exports = KeyboardControl;
 
 
-},{"../../geometry/vector2.js":31}],16:[function(require,module,exports){
+},{"../../geometry/vector2.js":32}],16:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -1732,6 +1778,65 @@ module.exports = Position;
 'use strict';
 
 /**
+ * Potion Component constructor
+ *
+ * @class Potion
+ * @classdesc The potion of an entity
+ *
+ * @param {Number} lifeGain - The lifeGain that this potion gives
+ */
+var Potion = function(lifeGain,count) {
+
+	/**
+	 * @property {String} name - The name of this system. This field is always required!
+	 */
+	this.name = 'potion';
+
+	/**
+	 * @property {Number} LifeGain - the lifeGain that this potion gives
+	 */
+	this.lifeGain = lifeGain;
+
+	this.count = count;
+
+};
+
+Potion.prototype = {
+
+	/**
+	 * Add a new item to the inventory
+	 * @protected
+	 */
+	usePotion: function(){
+
+		if(this.count >0){
+			this.count --;
+		}else{
+			this.count = 0;
+		}
+		
+	},
+
+	hasPotion: function(){
+		if(this.count > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
+
+};
+
+//Export the Browserify module
+module.exports = Potion;
+
+},{}],20:[function(require,module,exports){
+//Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
+'use strict';
+
+/**
  * Tooltip Component constructor
  *
  * @class Tooltip
@@ -1769,7 +1874,7 @@ var Tooltip = function(title, type, description) {
 //Export the Browserify module
 module.exports = Tooltip;
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -1799,7 +1904,7 @@ var Weapon = function(damage) {
 //Export the Browserify module
 module.exports = Weapon;
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -2066,14 +2171,26 @@ Entity.prototype = {
 		//We've made it all the way down here so the status effect is removed
 		return true;
 
-	}
+	},
 
+	updateHealthbar: function(){
+		var health = this.getComponent("health").percentage();
+
+		//Health bar turns red once health drops below 50%
+		if(health > 0.50){
+			var healthbarTexture = this.healthbarTextureGreen;
+		}else{
+			var healthbarTexture = this.healthbarTextureRed;
+		}
+
+		this.healthbar.setTexture(new PIXI.Texture(healthbarTexture, new PIXI.Rectangle(healthbarTexture.frame.x, healthbarTexture.frame.y, healthbarTexture.frame.width*health, healthbarTexture.frame.height)));
+	}
 };
 
 //Export the Browserify module
 module.exports = Entity;
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -2227,7 +2344,7 @@ Group.prototype.getEntities = function() {
 //Export the Browserify module
 module.exports = Group;
 
-},{"../gameobjects/entity.js":21}],23:[function(require,module,exports){
+},{"../gameobjects/entity.js":22}],24:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -2301,7 +2418,7 @@ StatusFire.prototype = Object.create(StatusEffect.prototype, {
 //Export the Browserify module
 module.exports = StatusFire;
 
-},{"./statuseffect.js":24}],24:[function(require,module,exports){
+},{"./statuseffect.js":25}],25:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -2377,7 +2494,7 @@ StatusEffect.prototype = {
 //Export the Browserify module
 module.exports = StatusEffect;
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -2417,22 +2534,10 @@ Combat.prototype = {
 
 			//Get the current entities components
 			var healthComponent = enemyEntity.getComponent("health");
-			var healthbar = enemyEntity.healthbar;
-			var healthbarTextureRed = enemyEntity.healthbarTextureRed;
-			var healthbarTextureGreen = enemyEntity.healthbarTextureGreen;
 
 			//The weapon of the current entity should damage to the current enemy
 			healthComponent.takeDamage(weaponComponent.damage);
-			console.log(healthbarTextureRed.frame);
-
-
-			//Health bar turns red once health drops below 50%
-			if(healthComponent.percentage() > 0.50) {
-				healthbar.setTexture(new PIXI.Texture(healthbarTextureGreen, new PIXI.Rectangle(healthbarTextureGreen.frame.x, healthbarTextureGreen.frame.y, healthbarTextureGreen.frame.width*healthComponent.percentage(), healthbarTextureGreen.frame.height)));
-			} else {
-				healthbar.setTexture(new PIXI.Texture(healthbarTextureRed, new PIXI.Rectangle(healthbarTextureRed.frame.x, healthbarTextureRed.frame.y, healthbarTextureRed.frame.width*healthComponent.percentage(), healthbarTextureRed.frame.height)));
-			}
-
+			enemyEntity.updateHealthbar();
 
 			//Generate the TextLog message
 			var textLogMessage = entity.name + " hit " + enemyEntity.name + " for " + weaponComponent.damage + " damage";
@@ -2495,7 +2600,7 @@ Combat.prototype = {
 //Export the Browserify module
 module.exports = Combat;
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -2819,7 +2924,7 @@ LightMap.prototype.calculate = function(lightSource, position) {
 //Export the Browserify module
 module.exports = LightMap;
 
-},{"../../geometry/vector2.js":31}],27:[function(require,module,exports){
+},{"../../geometry/vector2.js":32}],28:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -3002,7 +3107,7 @@ Movement.prototype = {
 //Export the Browserify module
 module.exports = Movement;
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -3074,7 +3179,7 @@ Open.prototype = {
 module.exports = Open;
 
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -3221,7 +3326,7 @@ module.exports = PathFinding;
 
 
 
-},{"../../geometry/vector2.js":31,"../../libraries/easystar.js":36}],30:[function(require,module,exports){
+},{"../../geometry/vector2.js":32,"../../libraries/easystar.js":37}],31:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -3335,7 +3440,7 @@ Boundary.prototype = {
 //Export the Browserify module
 module.exports = Boundary;
 
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -3456,7 +3561,7 @@ Vector2.prototype = {
 //Export the Browserify module
 module.exports = Vector2;
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -3491,7 +3596,7 @@ window.addEventListener("load", Intialize);
 //Export the Browserify module
 module.exports = Intialize;
 
-},{"./core/game.js":2}],33:[function(require,module,exports){
+},{"./core/game.js":2}],34:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -3589,7 +3694,7 @@ Event.prototype = {
 //Export the Browserify module
 module.exports = Event;
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -3705,7 +3810,7 @@ Key.prototype = {
 //Export the Browserify module
 module.exports = Key;
 
-},{"./event.js":33}],35:[function(require,module,exports){
+},{"./event.js":34}],36:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -3823,7 +3928,7 @@ Keyboard.prototype = {
 module.exports = Keyboard;
 
 
-},{"./key.js":34}],36:[function(require,module,exports){
+},{"./key.js":35}],37:[function(require,module,exports){
 //NameSpace
 var EasyStar = EasyStar || {};
 
@@ -4373,7 +4478,7 @@ if(typeof define === "function" && define.amd) {
 //Export the Browserify module
 module.exports = EasyStar;
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -4596,7 +4701,7 @@ MersenneTwister.prototype.genrand_res53 = function() {
 //Export the Browserify module
 module.exports = MersenneTwister;
 
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -4855,7 +4960,7 @@ Map.prototype.roomFits = function(room) {
 //Export the Browserify module
 module.exports = Map;
 
-},{"./tile.js":42}],39:[function(require,module,exports){
+},{"./tile.js":43}],40:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -5299,7 +5404,7 @@ MapDecorator.prototype = {
 //Export the Browserify module
 module.exports = MapDecorator;
 
-},{"../core/utils.js":3,"../factories/decorationfactory.js":5,"../factories/enemyfactory.js":6,"../factories/propfactory.js":8,"../geometry/vector2.js":31}],40:[function(require,module,exports){
+},{"../core/utils.js":3,"../factories/decorationfactory.js":5,"../factories/enemyfactory.js":6,"../factories/propfactory.js":8,"../geometry/vector2.js":32}],41:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -5936,7 +6041,7 @@ MapFactory.prototype = {
 //Export the Browserify module
 module.exports = MapFactory;
 
-},{"../core/utils.js":3,"../factories/enemyfactory.js":6,"../geometry/vector2.js":31,"./room.js":41}],41:[function(require,module,exports){
+},{"../core/utils.js":3,"../factories/enemyfactory.js":6,"../geometry/vector2.js":32,"./room.js":42}],42:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -6101,7 +6206,7 @@ Room.prototype = {
 //Export the Browserify module
 module.exports = Room;
 
-},{"../core/utils.js":3,"../geometry/vector2.js":31,"./tile.js":42}],42:[function(require,module,exports){
+},{"../core/utils.js":3,"../geometry/vector2.js":32,"./tile.js":43}],43:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -6205,7 +6310,7 @@ Tile.prototype = {
 //Export the Browserify module
 module.exports = Tile;
 
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -6371,7 +6476,7 @@ Queue.prototype = {
 module.exports = Queue;
 
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -6612,7 +6717,7 @@ Scheduler.prototype = {
 //Export the Browserify module
 module.exports = Scheduler;
 
-},{"./queue.js":43}],45:[function(require,module,exports){
+},{"./queue.js":44}],46:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -6695,16 +6800,22 @@ QuickslotBar.prototype.initialize = function() {
 
 		//Add the new PIXI.Text object
 		//TODO: Find out why adding these text numbers slows PIXI down so much
-		//this.addChild(textObject);
+		this.addChild(textObject);
 
 	}
+
+	var potion = new PIXI.Sprite.fromFrame("potion.png");
+	potion.position.x = basePosition.x;
+	potion.position.y = basePosition.y;
+	potion.scale = new PIXI.Point(2, 2);
+	this.addChild(potion);
 
 };
 
 //Export the Browserify module
 module.exports = QuickslotBar;
 
-},{"../geometry/vector2.js":31}],46:[function(require,module,exports){
+},{"../geometry/vector2.js":32}],47:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -6796,7 +6907,7 @@ SpellBar.prototype.initialize = function() {
 //Export the Browserify module
 module.exports = SpellBar;
 
-},{"../geometry/vector2.js":31}],47:[function(require,module,exports){
+},{"../geometry/vector2.js":32}],48:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -6948,7 +7059,7 @@ TextLog.prototype.clear = function() {
 //Export the Browserify module
 module.exports = TextLog;
 
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -7089,7 +7200,7 @@ TooltipElement.prototype.updateText = function(title, type, description) {
 //Export the Browserify module
 module.exports = TooltipElement;
 
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 //Because Browserify encapsulates every module, use strict won't apply to the global scope and break everything
 'use strict';
 
@@ -7367,4 +7478,4 @@ UI.prototype.mouseMove = function(mousedata) {
 //Export the Browserify module
 module.exports = UI;
 
-},{"../geometry/vector2.js":31,"../ui/quickslotbar.js":45,"../ui/spellbar.js":46,"../ui/textlog.js":47,"../ui/tooltipelement.js":48}]},{},[32]);
+},{"../geometry/vector2.js":32,"../ui/quickslotbar.js":46,"../ui/spellbar.js":47,"../ui/textlog.js":48,"../ui/tooltipelement.js":49}]},{},[33]);
