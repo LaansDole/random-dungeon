@@ -9,9 +9,27 @@
 	<script src="dist/stats.min.js"></script>
 	<script src="dist/dungeongeneration.js"></script>
 
+	<style>
+        #high-score {
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+			color: white;
+        }
+    </style>
+
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 </head>
 <body>
+	<div id="high-score"></div>
 
+    <script>
+        // Get the high score from localStorage
+        var highScore = localStorage.getItem('High Score:');
+
+        // Display the high score
+        document.getElementById('high-score').innerText = 'High Score: ' + highScore;
+    </script>
 </body>
 </html>
