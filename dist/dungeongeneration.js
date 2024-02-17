@@ -904,7 +904,7 @@
 				var entity = new Entity(game, "You", "warrior_right.png", 1000);
 
 				//Give the player a health of 100 points
-				entity.addComponent(new Health(100));
+				entity.addComponent(new Health(200));
 
 				//The starting position of the player is at the dungeon's entrance
 				entity.addComponent(new Position(position));
@@ -942,7 +942,12 @@
 				//This entity has a score
 				entity.score = 0;
 
-				entity.addComponent(new Potion(50, 5));
+				// Set the default high score to 0 if it's not already set
+				if (!localStorage.getItem('High Score:')) {
+					localStorage.setItem('High Score:', 0);
+				}
+
+				entity.addComponent(new Potion(50, 10));
 				//Return the entity
 				return entity;
 
@@ -2587,6 +2592,14 @@
 					//Make the game inactive
 					this.game.isActive = false;
 
+					// Check if the current score is higher than the stored score
+					var highScore = localStorage.getItem('High Score:');
+					if (entity.score > highScore) {
+						// Store the new high score
+						localStorage.setItem('High Score:', entity.score);
+					}
+
+					window.location.reload();
 				}
 
 				//Remove the entity from the map's list
@@ -2603,7 +2616,6 @@
 
 				//Remove the entity from the tile it was standing on
 				currentTile.removeEntity(entity);
-
 			}
 
 		};
