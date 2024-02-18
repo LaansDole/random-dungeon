@@ -1,17 +1,27 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html>
 <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
 	<title>Random Dungeon</title>
-
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-
-	<script src="dist/pixi.dev.js"></script>
-	<script src="dist/stats.min.js"></script>
-	<script src="dist/dungeongeneration.js"></script>
-
 	<style>
+        #game-logo {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #game-logo img {
+            object-fit: contain;
+            width: 200px;
+            height: 200px;
+        }
         #high-score {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: bold;
             text-align: center;
             margin-top: 20px;
@@ -22,14 +32,26 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 </head>
 <body>
+    <div id="game-logo">
+        <img src="./assets/logo/random-dungeon-bg.png" alt="Game Logo" />
+    </div>
 	<div id="high-score"></div>
 
     <script>
+        // Set the default high score to 0 if it's not already set
+        if (!localStorage.getItem('High Score:')) {
+            localStorage.setItem('High Score:', 0);
+        }
         // Get the high score from localStorage
         var highScore = localStorage.getItem('High Score:');
 
         // Display the high score
         document.getElementById('high-score').innerText = 'High Score: ' + highScore;
     </script>
+
+	<script src="dist/pixi.dev.js"></script>
+	<script src="dist/stats.min.js"></script>
+	<script src="dist/dungeongeneration.js"></script>
+
 </body>
 </html>

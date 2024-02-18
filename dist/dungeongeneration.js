@@ -942,11 +942,6 @@
 				//This entity has a score
 				entity.score = 0;
 
-				// Set the default high score to 0 if it's not already set
-				if (!localStorage.getItem('High Score:')) {
-					localStorage.setItem('High Score:', 0);
-				}
-
 				entity.addComponent(new Potion(50, 10));
 				//Return the entity
 				return entity;
