@@ -2554,9 +2554,16 @@
 						this.removeEntity(enemyEntity);
 
 						//Increase the player's score
-						if (entity.name === "You") {
+						if (entity.name === "You" && enemyEntity.name === "Quick Spider") {
 							entity.score += 1;
-							textLogMessage += ". Your score is now " + entity.score;
+							// Update the score display on the page
+							document.getElementById('current-score').innerText = 'Current Score: ' + entity.score;
+						}
+
+						if (entity.name === "You" && enemyEntity.name === "Skeleton") {
+							entity.score += 2;
+							// Update the score display on the page
+							document.getElementById('current-score').innerText = 'Current Score: ' + entity.score;
 						}
 
 						//Add another string to the message

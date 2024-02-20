@@ -1,16 +1,18 @@
-# Random Dungeon Generation V.0.6.6
+# Random Dungeon Generation
 
 This project started out as a small project to experiment with random dungeon generation. Quickly I began to notice that this was a lot of fun to work with and I added a player. And I added some enemies. And I rewrote the map generator. I added turns. Etc etc, until we ended up here!
 A roguelike game with a random dungeon generator that I am creating purely in javascript on canvas!
 
 _Version: 0.6.6 - 5 August 2014_
 
-By [Stefan Weck](http://www.stefanweck.nl),
+### By [Stefan Weck](http://www.stefanweck.nl),
 
 - Keep track of the progress on the [Development Blog](http://gamesby.stefanweck.nl/)
 - Follow me on [Twitter](https://twitter.com/stefanweck)
 - Email me at contact@stefanweck.nl
 
+### Continued by [Laans Dole](https://laansdole.github.io/LaansDole/)
+- Email me at dolelongan@gmail.com
 ## Features
 
 ![Some Characters](http://stefanweck.nl/github/github_banner_1.png)
@@ -60,16 +62,6 @@ Every room is now a plain old square. I would like to see some more variation in
 ## How to Build
 
 I provide a fully compiled version of the game in the `dist` folder. Both plain and minified formats are in there.
-
-Install NPM if you haven't already done so. NPM is a package manager that ships with Node.js. Then open up your console and navigate to the root folder of this project.
-
-Run `npm install` once to install all the dependencies needed by this project. Next there are a few options:
-
-Run `grunt build` to perform a new build to the `dist` folder. This way Browserify will generate a bundle from every required script in the `lib` folder, this will also generate a minified file of the bundle. This is preferred when you are done developing and want to push your new changes, as this version doesn't include the debug map.
-
-Run `grunt dev` to watch every module needed in the project for changes. Watchify will take care of rebuilding the bundle so the only thing you have to do is refresh your browser. No need to run `grunt build` everytime you make a change. This version includes a debug map so you are able to debug single files while the .js file included is still the bundle file.
-
-Run `grunt debug` to let JSHint check the code for you, a tool that helps to detect errors and potential problems in your JavaScript code.
 
 ## Changelog
 

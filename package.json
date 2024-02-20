@@ -1,20 +1,22 @@
 {
-  "title": "Dungeon Generator",
-  "name": "dungeongenerator",
-  "version": "0.6.3",
-  "author": "Stefan Weck",
-  "homepage": "https://github.com/stefanweck/dungeongeneration",
-  "engines": {
-    "node": ">= 0.10.0"
+  "name": "random-dungeon",
+  "version": "1.0.0",
+  "description": "Random Dungeon Generation",
+  "main": "index.html",
+  "directories": {
+    "lib": "lib"
   },
-  "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-jshint": "~0.10.0",
-    "browserify": "~4.1.11",
-    "grunt-browserify": "~2.1.0",
-    "grunt-browserifying": "~1.0.8",
-    "grunt-watchify": "~0.1.0"
-  }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LaansDole/random-dungeon.git"
+  },
+  "author": "Stefan Weck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LaansDole/random-dungeon/issues"
+  },
+  "homepage": "https://github.com/LaansDole/random-dungeon#readme"
 }
