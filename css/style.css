@@ -43,8 +43,9 @@ i {
     transform: scale(2);
 }
 
-.highlight {
-    --bs-btn-active-color: #000;
-    --bs-btn-active-bg: #ffc107;
-    --bs-btn-active-border-color: #ffc107;
+#up,
+#down,
+#left,
+#right {
+    transform: scale(1.2);
 }
