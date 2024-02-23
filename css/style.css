@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    touch-action: manipulation;
 }
 
 body {
@@ -36,7 +35,8 @@ canvas {
 }
 
 #zone_joystick {
-    transform: translateY(750px);
+    transform: translateY(700px);
+    touch-action: manipulation;
 }
 
 i {
@@ -48,4 +48,5 @@ i {
 #left,
 #right {
     transform: scale(1.2);
+    touch-action: manipulation;
 }
