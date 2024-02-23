@@ -1,13 +1,38 @@
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-body{
-	background-color:#000;
+body {
+    background-color: #000 !important;
 }
 
-canvas{
-	display:block;
-    background-color:#000;
+canvas {
+    display: block;
+    background-color: #000;
+}
+
+#game-logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-logo img {
+    object-fit: contain;
+    width: 200px;
+    height: 200px;
+}
+
+.score {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+
+#zone_joystick {
+    transform: translateY(300px);
 }

@@ -2,7 +2,8 @@ SHELL := /bin/bash
 .PHONY: publish
 publish:
 	git add .
-	git commit -m "ci: update game version"
+	read -p "Enter commit message: " message; \
+	git commit -m "$$message"
 	git fetch
 	git pull
 	git push
