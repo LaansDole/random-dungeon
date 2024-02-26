@@ -60,13 +60,25 @@
                 </button>
               </div>
             </div>
-            <button 
+            <div>
+              <button 
               type="button" 
               class="btn btn-outline-danger float-end p-3 m-3"
               style="--bs-btn-border-radius: 10px;"  
               id="heal" onclick="simulateKeyPress(49)">
-                <i class="fa-solid fa-suitcase-medical"></i>
-            </button>
+                <i class="fa-solid fa-suitcase-medical fs-4">
+                  <span 
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    style="--bs-badge-font-size: 0.33em"
+                    id="healing-potion">
+                    10
+                    <span class="visually-hidden">healing potions</span>
+                  </span>
+                </i>
+                
+              </button>
+            </div>
+            
         </div>
         <script src="dist/pixi.dev.js"></script>
         <script src="dist/stats.min.js"></script>
