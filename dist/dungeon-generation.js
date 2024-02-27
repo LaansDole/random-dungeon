@@ -1816,6 +1816,26 @@
 
 				if (this.count > 0) {
 					this.count--;
+
+					// Get the current number of potions from localStorage
+					let numberOfPotions = localStorage.getItem('Healing Potions:');
+
+					// If there are no potions in localStorage, set it to 0
+					if (numberOfPotions <= 0) {
+						numberOfPotions = 0;
+					} else {
+						// Decrement the number of potions in localStorage
+						numberOfPotions--;
+					}
+
+					// Update the number of potions in localStorage
+					localStorage.setItem('Healing Potions:', numberOfPotions);
+
+					// Get the element with id 'healing-potion'
+					let potionElement = document.getElementById('healing-potion');
+
+					// Set the innerHTML of the element to the number of potions
+					potionElement.innerHTML = numberOfPotions;
 				} else {
 					this.count = 0;
 				}
