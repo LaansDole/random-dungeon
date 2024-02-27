@@ -32,15 +32,12 @@ canvas {
     transform: translateY(200px);
     position: relative;
     margin: 20px;
-}
-
-div#high-scores {
     width: fit-content;
     padding: 10px;
 }
 
 div#current-score {
-    bottom: -14em;
+    bottom: -20em;
 }
 
 div#reset-button {
