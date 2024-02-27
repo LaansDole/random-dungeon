@@ -26,16 +26,27 @@ canvas {
 }
 
 .score {
-    font-size: 1.5em;
+    font-size: 1.25em;
     font-weight: bold;
     color: white;
     transform: translateY(200px);
     position: relative;
-    margin: 20px
+    margin: 20px;
+}
+
+div#high-scores {
+    width: fit-content;
+    padding: 10px;
 }
 
 div#current-score {
     bottom: -14em;
+}
+
+div#reset-button {
+    position: relative;
+    transform: translateY(200px);
+    margin-left: 20px;
 }
 
 #zone-joystick {

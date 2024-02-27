@@ -30,4 +30,12 @@ highScoresDiv.innerHTML = '';
 highScores.sort((a, b) => b - a).forEach((score, index) => {
     highScoresDiv.innerHTML += `High Score ${index + 1}: ${score}<br>`;
 });
+
 document.getElementById('current-score').innerText = 'Current Score: ' + currentScore;
+
+// Reset high scores
+document.getElementById('reset-button').addEventListener('click', function () {
+    localStorage.setItem('High Scores', JSON.stringify([0, 0, 0, 0, 0]));
+    alert('High Scores have been reset.');
+    window.location.reload();
+});
