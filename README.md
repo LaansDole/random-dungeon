@@ -3,9 +3,7 @@
 This project started out as a small project to experiment with random dungeon generation. Quickly I began to notice that this was a lot of fun to work with and I added a player. And I added some enemies. And I rewrote the map generator. I added turns. Etc etc, until we ended up here!
 A roguelike game with a random dungeon generator that I am creating purely in javascript on canvas!
 
-_Version: 0.6.6 - 5 August 2014_
-
-### By [Stefan Weck](http://www.stefanweck.nl),
+### By [Stefan Weck](http://www.stefanweck.nl) - 5 August 2014,
 
 - Keep track of the progress on the [Development Blog](http://gamesby.stefanweck.nl/)
 - Follow me on [Twitter](https://twitter.com/stefanweck)
@@ -42,7 +40,7 @@ Currently this only applies to fellow programmers that know their way around the
 ![Some Other Characters](http://stefanweck.nl/github/github_banner_2.png)
 
 You can view a live demo with the current code
-on GitHub right here: [Live Demo](http://stefanweck.nl/github/dungeongeneration/).
+on GitHub right here: [Live Demo]([http://stefanweck.nl/github/dungeongeneration/](https://laansdole.github.io/random-dungeon/)).
 Note: Move the character around with your WASD keys!
 
 ## What's Next
@@ -63,7 +61,7 @@ Every room is now a plain old square. I would like to see some more variation in
 
 I provide a fully compiled version of the game in the `dist` folder. Both plain and minified formats are in there.
 
-## Changelog
+## Changelog (2014)
 
 **v0.6.6**
 
