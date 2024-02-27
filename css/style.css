@@ -28,13 +28,17 @@ canvas {
 .score {
     font-size: 1.5em;
     font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
     color: white;
     transform: translateY(200px);
+    position: relative;
+    margin: 20px
 }
 
-#zone_joystick {
+div#current-score {
+    bottom: -14em;
+}
+
+#zone-joystick {
     transform: translateY(550px);
     touch-action: manipulation;
 }

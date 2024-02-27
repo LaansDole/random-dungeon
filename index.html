@@ -16,9 +16,12 @@
         <div id="game-logo">
             <img src="./assets/logo/random-dungeon-bg.png" alt="Game Logo" />
         </div>
-        <div class="score" id="high-score"></div>
-        <div class="score" id="current-score"></div>
-        <div class="container text-center" id="zone_joystick">
+        <div class="d-flex flex-column">
+          <div class="score" id="high-scores"></div>
+          <div class="score" id="current-score"></div>
+        </div>
+        
+        <div class="container text-center" id="zone-joystick">
             <div class="row row-cols-2">
               <div class="col">
                 <button 
@@ -73,11 +76,9 @@
                     id="healing-potion">
                     <span class="visually-hidden">healing potions</span>
                   </span>
-                </i>
-                
+                </i>     
               </button>
             </div>
-            
         </div>
         <script src="dist/pixi.dev.js"></script>
         <script src="dist/stats.min.js"></script>

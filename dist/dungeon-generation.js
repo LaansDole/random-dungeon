@@ -2614,11 +2614,15 @@
 					//Make the game inactive
 					this.game.isActive = false;
 
-					// Check if the current score is higher than the stored score
-					var highScore = localStorage.getItem('High Score:');
-					if (entity.score > highScore) {
-						// Store the new high score
-						localStorage.setItem('High Score:', entity.score);
+					// Check if the current score is higher than the lowest stored score
+					if (entity.score > Math.min(...highScores)) {
+						// Remove the lowest score
+						highScores.sort();
+						highScores.shift();
+						// Add the new high score
+						highScores.push(entity.score);
+						// Store the new high scores
+						localStorage.setItem('High Scores', JSON.stringify(highScores));
 					}
 
 					window.location.reload();
