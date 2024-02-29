@@ -39,8 +39,6 @@ Currently this only applies to fellow programmers that know their way around the
 
 ![Some Other Characters](http://stefanweck.nl/github/github_banner_2.png)
 
-You can view a live demo with the current code
-on GitHub right here: [Live Demo]([http://stefanweck.nl/github/dungeongeneration/](https://laansdole.github.io/random-dungeon/)).
 Note: Move the character around with your WASD keys!
 
 ## What's Next
